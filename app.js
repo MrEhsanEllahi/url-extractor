@@ -74,7 +74,6 @@ async function extractUrls(url, callback) {
         }
         callback(hrefs_data);
     } catch (error) {
-        console.error(error);
         callback(false);
     }
 }
