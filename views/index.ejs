@@ -48,8 +48,8 @@
       <div class="card">
         <div class="card-header">All links from the URL: <%= url %> </div>
         <div class="card-body">
-          <% urls[url].forEach(element => { %>
-          <li><a href="<%= element.href %> "><%= element.href %></a></li>
+          <% urls.forEach(url => { %>
+          <li><a href="<%= url.href %> "><%= url.href %></a></li>
           <% }); %>
         </div>
       </div>

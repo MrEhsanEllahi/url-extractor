@@ -37,11 +37,7 @@ app.post('/extract-urls', (req, res) => {
         if (!urlsList) {
             res.status(500).send('Something went wrong!');
         } else {
-
-            //console the list of links (task-1)
-            console.log(urlsList);
-
-            //show user the list as clickable links(task-2)
+            //show user the list as clickable links
             res.render('index', {
                 url: url,
                 urls: urlsList
@@ -64,23 +60,19 @@ async function extractUrls(url, callback) {
                     return;
                 }
                 href = href.trim();
-                //if captured href is not valid url, make it
+                //in case href doesn't include webiste url but just a target
                 if (!isValidUrl(href)) {
-                    href = url + '/' + href.substr(href.indexOf('/') + 1);
+                    var href = url + '/' + href.substr(href.indexOf('/') + 1);
                 }
-                //add the link to a list
-                hrefs_data.push({
-                    href
-                });
+                //add the link to a list only if its a valid url and not ends with #
+                if(isValidUrl(href) && !href.endsWith('#')) {
+                    hrefs_data.push({
+                        href
+                    });
+                }
             });
         }
-        //assign the list of links to the object with url as the key (task-1)
-        var hrefsObject = {};
-        hrefsObject[url] = hrefs_data;
-
-        console.log(hrefsObject);
-
-        callback(hrefsObject);
+        callback(hrefs_data);
     } catch (error) {
         console.error(error);
         callback(false);

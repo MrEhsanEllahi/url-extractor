@@ -1,14 +1,10 @@
 # Web Page Links Extractor
 
-A project that finds all the links contained in a web page and presents them as a list of clickable links to the user and console them as a JSON object.
+A project that finds all the links contained in a web page and presents them as a list of clickable links to the user.
 
 ## Description
 
-This project takes a URL as input, scans the web page at that URL, and outputs to console as a JSON object with the input URL as the key and a list of URLs found on that page as the value. Additionally, the project provides a web page where a user can input the URL and view the results as a list of clickable links.
-
-## Features
-- Extracts all the links from a web page Presents the links in a JSON object format.
-- Provides a web interface for users to input URLs and view the results.
+This project provides a web page where a user inputs the URL, the webpage is scanned and a list of URLs found on that page is scrapped. Then after processing & formatting them the user is presented with the result as a list of clickable links.
 
 ## Technologies
 - NodeJS
