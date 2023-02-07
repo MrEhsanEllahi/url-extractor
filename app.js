@@ -60,7 +60,7 @@ async function extractUrls(url, callback) {
                     return;
                 }
                 href = href.trim();
-                //in case href doesn't include webiste url but just a target
+                //in case href doesn't include webiste url but just a target, for example: "/new-page"
                 if (!isValidUrl(href)) {
                     var href = url + '/' + href.substr(href.indexOf('/') + 1);
                 }
