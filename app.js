@@ -19,9 +19,9 @@ app.set('view engine', 'ejs');
 //show the index view when app starts
 app.get('/', function (req, res) {
     res.render('index');
-})
+});
 
-app.post('/extract-urls', (req, res) => {
+app.post('/extract-links', (req, res) => {
     let url = req.body.url;
 
     //if not a valid url, return an error
@@ -32,15 +32,15 @@ app.post('/extract-urls', (req, res) => {
     //remove the trailing slash in order to use url later for viewing 
     url = url.endsWith('/') ? url.substring(0, url.length - 1) : url;
 
-    extractUrls(url, urlsList => {
+    extractUrls(url, linksList => {
         //callback will be false in case of any error
-        if (!urlsList) {
+        if (!linksList) {
             res.status(500).send('Something went wrong!');
         } else {
             //show user the list as clickable links
             res.render('index', {
                 url: url,
-                urls: urlsList
+                links: linksList
             });
         }
     });
